@@ -10,10 +10,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     [SerializeField]
     private GameObject shopIcon;
+
+    [SerializeField]
+    private GameObject vertContainer;
     // Start is called before the first frame update
     void Start()
     {
-        var i = 0;
         foreach (ShopItem shop in shopItems)
         {
             //Setup
@@ -25,8 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
             icon.itemCost.text = shop.cost.ToString();
             icon.itemIcon.sprite = shop.itemIcon;
 
-            icon.itemTransform.transform.position = new Vector2(0, i * 200);
-            i++;
+            newItem.transform.parent = vertContainer.transform;
         }
     }
 }

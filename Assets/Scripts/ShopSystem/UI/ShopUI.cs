@@ -9,5 +9,4 @@ public class ShopUI : MonoBehaviour
     public TMP_Text itemCost;
     public Toggle toggleItem;
     public Image itemIcon;
-    public Canvas itemTransform;
 }
