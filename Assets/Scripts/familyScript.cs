@@ -18,7 +18,7 @@ public class familyScript : MonoBehaviour
         for(int i = 0; i < foodList.Length; i++){
             if(FamilyDeathList[i] != 1){
                 //food logic
-                if(foodList[i] == true){
+                if(foodList[i] == true && FamilyFoodState[i] > 0){
                     FamilyFoodState[i] = FamilyFoodState[i] - 1;
                 }
                 else if(foodList[i] == false){
@@ -31,7 +31,7 @@ public class familyScript : MonoBehaviour
                         FamilyHealthState[i] = FamilyHealthState[i] + 1;
                     }
                 }
-                if(medList[i]== true){
+                if(medList[i]== true && FamilyHealthState[i] > 0){
                     FamilyHealthState[i] = FamilyHealthState[i] - 1;
                 }
                 
