@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time has run out!");
                 _countDOwnTime = 0;
                 CountStop();
+                SceneManager.LoadScene("Purchase");
             }
         }
     }
