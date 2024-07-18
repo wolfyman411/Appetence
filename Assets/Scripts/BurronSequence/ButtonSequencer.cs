@@ -15,7 +15,7 @@ public class ButtonSequencer : MonoBehaviour
         for (int i = 0; i < sequenceButtons.Count; i++)
         {
             int index = i;
-            sequenceButtons[i].button.onClick.AddListener(() => OnButtonClicked(sequenceButtons[index]));
+            sequenceButtons[index].button.onClick.AddListener(() => OnButtonClicked(sequenceButtons[index]));
 
         }
     }
@@ -27,7 +27,6 @@ public class ButtonSequencer : MonoBehaviour
     void OnButtonClicked(ButtonScript clickedButton)
     {
         numSequence.Add(clickedButton.GetNumber());
-        Debug.Log("Number pressed: " + clickedButton.GetNumber());
         Debug.Log("Number Sequence: " + GetNumberSequence());
     }
 
