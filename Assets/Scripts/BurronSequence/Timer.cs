@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 {
     public float countDownSeconds = 60f;
     public TMP_Text countDownDisplay;
+    [SerializeField]
+    private string _loadSceneName = "TODO";
 
     private float _countDOwnTime
     {
@@ -36,7 +38,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time has run out!");
                 _countDOwnTime = 0;
                 CountStop();
-                SceneManager.LoadScene("Purchase");
+                SceneManager.LoadScene(_loadSceneName);
             }
         }
     }
