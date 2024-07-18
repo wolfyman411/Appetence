@@ -11,6 +11,8 @@ public class ItemReader : MonoBehaviour
     public TMP_Text itemSequence;
     public Image itemImage;
     public int itemLength;
+    [SerializeField]
+    private float waitDuration;
     // Start is called before the first frame update
     void Update()
     {
@@ -18,5 +20,12 @@ public class ItemReader : MonoBehaviour
         itemSequence.text = item.itemSequence;
         itemLength = item.itemSequence.Length;
         itemImage.sprite = item.itemSprite;
+    }
+
+    public IEnumerator ShowItemSequence()
+    {
+        itemSequence.gameObject.SetActive(true);
+        yield return new WaitForSeconds(waitDuration);
+        itemSequence.gameObject.SetActive(false);
     }
 }

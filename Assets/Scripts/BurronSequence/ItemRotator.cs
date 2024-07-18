@@ -8,28 +8,32 @@ public class ItemRotator : MonoBehaviour
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
 
-    private int index = 0;
+    private bool isworking = true;
+    private ItemObjects item;
     // Start is called before the first frame update
     void Start()
     {
-        
+        item = itemReader.item = objects[Random.Range(0, objects.Count)];
+        StartCoroutine(itemReader.ShowItemSequence());
     }
 
     // Update is called once per frame
     void Update()
     {
-        itemReader.item = objects[index];
+        
         if (buttonSequencer.GetNumberSequence().Length >= itemReader.itemLength)
         {
-            if(buttonSequencer.GetNumberSequence() == objects[index].itemSequence)
+            if(buttonSequencer.GetNumberSequence() == item.itemSequence)
             {
                 Debug.Log("Correct");
+                item = itemReader.item = objects[Random.Range(0, objects.Count)];
+                StartCoroutine(itemReader.ShowItemSequence());
                 buttonSequencer.ClearNumberSequence();
-                index++;
             }
             else
             {
                 Debug.Log("Wrong");
+                StartCoroutine(itemReader.ShowItemSequence());
                 buttonSequencer.ClearNumberSequence();
             }
         }
