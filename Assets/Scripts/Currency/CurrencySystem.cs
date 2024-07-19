@@ -27,7 +27,12 @@ public class CurrencySystem : MonoBehaviour
 
     public void AddCurrency(int amount)
     {
-        currency += amount;
+        if(currency + amount > 0){
+            currency += amount;
+        }
+        else{
+            currency = 0;
+        }
     }
 
     public int GetCurrency()
