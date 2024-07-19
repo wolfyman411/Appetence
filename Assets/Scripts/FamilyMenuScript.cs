@@ -20,20 +20,10 @@ public class FamilyMenuScript : MonoBehaviour
     private TMP_Text currency;
 
     [SerializeField]
-    private TMP_Text Medicine;
-    [SerializeField]
     private TMP_Text totalCost;
 
     [SerializeField]
     private Button nextDayBtn;
-
-    [SerializeField]
-    private GameObject[] FoodTogList;
-
-    [SerializeField]
-    private GameObject[] MedTogList;
-    
-
 
     [SerializeField]
     private TMP_Text dayDisplay;
@@ -51,13 +41,6 @@ public class FamilyMenuScript : MonoBehaviour
         foreach (Text member in familyList)
         {
             member.text = familyScript.Instance.FamilyNames[i] + " - " + familyScript.Instance.HungerValues[familyScript.Instance.FamilyFoodState[i]] + " - " + familyScript.Instance.HealthValues[familyScript.Instance.FamilyHealthState[i]];
-            if(familyScript.Instance.FamilyHealthState[i] == 3){
-                FoodTogList[i].SetActive(false);
-                MedTogList[i].SetActive(false);
-            }
-            if(familyScript.Instance.FamilyHealthState[i] == 1 || familyScript.Instance.FamilyHealthState[i] == 2){
-                MedTogList[i].SetActive(true);
-            }
             i++;
         }
     }
@@ -79,14 +62,9 @@ public class FamilyMenuScript : MonoBehaviour
 
     public void UpdateButton()
     {
-        bool dead = familyScript.Instance.DayUpdate(foodList, medList);
+        familyScript.Instance.DayUpdate(foodList, medList);
         CurrencySystem.Instance.AddCurrency(-CalcTotal());
-        if(dead){
-            SceneManager.LoadScene("GameOver");
-        }
-        else{
-            SceneManager.LoadScene("Factory");
-        }
+        SceneManager.LoadScene("Factory");
     }
     public void FoodButtons(int index)
     {
