@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class familyScript : MonoBehaviour
 {
@@ -34,8 +33,7 @@ public class familyScript : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    public bool DayUpdate(bool[] foodList, bool[] medList){
-        bool dead = false;
+    public void DayUpdate(bool[] foodList, bool[] medList){
         for(int i = 0; i < foodList.Length; i++){
             if(FamilyDeathList[i] != 1){
                 //food logic
@@ -60,13 +58,8 @@ public class familyScript : MonoBehaviour
                     FamilyDeathList[i] = 1;
                 }
             }
-            
-        }
-        if(FamilyDeathList[0]==1){
-            dead = true;
         }
         day++;
-        return (dead);
     }
 
     int getHealth(int i){
