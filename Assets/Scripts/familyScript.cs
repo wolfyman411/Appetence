@@ -8,6 +8,25 @@ public class familyScript : MonoBehaviour
     [SerializeField] public int[] FamilyFoodState;
     [SerializeField] public int[] FamilyHealthState;
     [SerializeField] public int[] FamilyDeathList;
+    [SerializeField] public string[] FamilyNames;
+    public string[] HealthValues { get; } = { "Healthy", "Sick", "Bedridden", "Dead" };
+    public string[] HungerValues { get; } = { "Fine", "Hungry", "Starving", "Dead" };
+
+    public static familyScript Instance { get; private set; }
+
+    public int day = 0;
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            //Debug.LogError("There is more than one instance!");
+            return;
+        }
+
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +46,7 @@ public class familyScript : MonoBehaviour
                 //health logic
                 
                 if(FamilyFoodState[i] > 0){
-                    if((Random.Range(0f, 10.0f)) > 8f){
+                    if((Random.Range(0f, 10.0f)) > 8f && day > 1){
                         FamilyHealthState[i] = FamilyHealthState[i] + 1;
                     }
                 }
@@ -40,8 +59,9 @@ public class familyScript : MonoBehaviour
                 }
             }
         }
-        
+        day++;
     }
+
     int getHealth(int i){
         return FamilyHealthState[i];
     }
