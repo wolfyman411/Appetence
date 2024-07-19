@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Medicine
   m_EditorClassIdentifier: 
   itemName: Medicine
-  cost: 3.5
+  cost: 200
   availible: 0
   itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

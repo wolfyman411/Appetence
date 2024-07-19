@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShopItem : ScriptableObject
 {
     public string itemName;
-    public float cost;
+    public int cost;
     public bool availible;
     public Sprite itemIcon;
 }

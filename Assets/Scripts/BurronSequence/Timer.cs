@@ -9,9 +9,9 @@ public class Timer : MonoBehaviour
     public float countDownSeconds = 60f;
     public TMP_Text countDownDisplay;
     [SerializeField]
-    private string _loadSceneName = "TODO";
+    private string _loadSceneName = "Family";
 
-    private float _countDOwnTime
+    private float _countDownTime
     {
         get { return countDownSeconds; }
         set { countDownSeconds = value; }
@@ -28,15 +28,15 @@ public class Timer : MonoBehaviour
     {
         if (_countStart)
         {
-            if (_countDOwnTime > 0)
+            if (_countDownTime > 0)
             {
-                _countDOwnTime -= Time.deltaTime;
-                TimeUIUpdate(_countDOwnTime);
+                _countDownTime -= Time.deltaTime;
+                TimeUIUpdate(_countDownTime);
             }
             else
             {
                 Debug.Log("Time has run out!");
-                _countDOwnTime = 0;
+                _countDownTime = 0;
                 CountStop();
                 SceneManager.LoadScene(_loadSceneName);
             }
@@ -45,7 +45,7 @@ public class Timer : MonoBehaviour
 
     public void CountStart()
     {
-        _countDOwnTime = countDownSeconds;
+        _countDownTime = countDownSeconds;
         _countStart = true;
     }
 

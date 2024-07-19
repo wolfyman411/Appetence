@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class CurrencySystem : MonoBehaviour
 {
-    public float currency{ get; private set; }
+    private int currency = 350;
+
+    public static CurrencySystem Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            //Debug.LogError("There is more than one instance!");
+            return;
+        }
+
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject.transform);
+        DontDestroyOnLoad(transform.gameObject);
     }
 
-    public bool AddCurrency(float amount)
+    public void AddCurrency(int amount)
     {
-        //Check if negative
-        if (amount < 0)
-        {
-            if (amount + currency < 0)
-            {
-                return false;
-            }
-            else
-            {
-                currency += amount;
-                return true;
-            }
-        //Positive
-        }
-        else
-        {
-            currency += amount;
-            return true;
-        }
+        currency += amount;
+    }
+
+    public int GetCurrency()
+    {
+        return currency;
     }
 }
