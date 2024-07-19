@@ -20,7 +20,6 @@ public class ItemRotator : MonoBehaviour
     void Start()
     {
         item = itemReader.item = objects[Random.Range(0, objects.Count)];
-        StartCoroutine(itemReader.ShowItemSequence());
     }
 
     // Update is called once per frame
@@ -36,7 +35,7 @@ public class ItemRotator : MonoBehaviour
         if (buttonSequencer.GetNumberSequence()[buttonSequencer.GetNumberSequence().Length-1] != itemReader.item.itemSequence[buttonSequencer.GetNumberSequence().Length-1])
         {
             Debug.Log("Wrong");
-            StartCoroutine(itemReader.ShowItemSequence());
+            StartCoroutine(itemReader.CorrectnessDisplay("Wrong"));
             buttonSequencer.ClearNumberSequence();
 
             CurrencySystem.Instance.AddCurrency(-50);
@@ -45,7 +44,7 @@ public class ItemRotator : MonoBehaviour
         {
             Debug.Log("Correct");
             item = itemReader.item = objects[Random.Range(0, objects.Count)];
-            StartCoroutine(itemReader.ShowItemSequence());
+            StartCoroutine(itemReader.CorrectnessDisplay("Correct"));
             buttonSequencer.ClearNumberSequence();
 
             CurrencySystem.Instance.AddCurrency(35);
