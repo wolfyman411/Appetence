@@ -51,12 +51,12 @@ public class FamilyMenuScript : MonoBehaviour
         foreach (Text member in familyList)
         {
             member.text = familyScript.Instance.FamilyNames[i] + " - " + familyScript.Instance.HungerValues[familyScript.Instance.FamilyFoodState[i]] + " - " + familyScript.Instance.HealthValues[familyScript.Instance.FamilyHealthState[i]];
+            if(familyScript.Instance.FamilyHealthState[i] == 1 || familyScript.Instance.FamilyHealthState[i] == 2){
+                MedTogList[i].SetActive(true);
+            }
             if(familyScript.Instance.FamilyHealthState[i] == 3 || familyScript.Instance.FamilyFoodState[i] == 3){
                 FoodTogList[i].SetActive(false);
                 MedTogList[i].SetActive(false);
-            }
-            if(familyScript.Instance.FamilyHealthState[i] == 1 || familyScript.Instance.FamilyHealthState[i] == 2){
-                MedTogList[i].SetActive(true);
             }
             i++;
         }
@@ -66,7 +66,7 @@ public class FamilyMenuScript : MonoBehaviour
     {
         totalCost.text = CalcTotal().ToString();
 
-        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
+        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() == 0)
         {
             totalCost.text = "TOO MUCH!";
             nextDayBtn.transform.localScale = Vector3.zero;

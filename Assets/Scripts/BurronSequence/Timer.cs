@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
     {
         if (_countStart)
         {
-            if (_countDownTime > 0)
+            if (_countDownTime > 59)
             {
                 _countDownTime -= Time.deltaTime;
                 TimeUIUpdate(_countDownTime);
