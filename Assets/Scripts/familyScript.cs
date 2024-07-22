@@ -56,7 +56,7 @@ public class familyScript : MonoBehaviour
                     FamilyHealthState[i] = FamilyHealthState[i] - 1;
                 }
                 
-                if(FamilyFoodState[i] == 4 || FamilyHealthState[i] == 4){
+                if(FamilyFoodState[i] == 3 || FamilyHealthState[i] == 3){
                     FamilyDeathList[i] = 1;
                 }
             }

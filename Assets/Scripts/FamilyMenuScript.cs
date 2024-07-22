@@ -51,7 +51,7 @@ public class FamilyMenuScript : MonoBehaviour
         foreach (Text member in familyList)
         {
             member.text = familyScript.Instance.FamilyNames[i] + " - " + familyScript.Instance.HungerValues[familyScript.Instance.FamilyFoodState[i]] + " - " + familyScript.Instance.HealthValues[familyScript.Instance.FamilyHealthState[i]];
-            if(familyScript.Instance.FamilyHealthState[i] == 3){
+            if(familyScript.Instance.FamilyHealthState[i] == 3 || familyScript.Instance.FamilyFoodState[i] == 3){
                 FoodTogList[i].SetActive(false);
                 MedTogList[i].SetActive(false);
             }
