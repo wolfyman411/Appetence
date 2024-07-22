@@ -20,10 +20,20 @@ public class FamilyMenuScript : MonoBehaviour
     private TMP_Text currency;
 
     [SerializeField]
+    private TMP_Text Medicine;
+    [SerializeField]
     private TMP_Text totalCost;
 
     [SerializeField]
     private Button nextDayBtn;
+
+    [SerializeField]
+    private GameObject[] FoodTogList;
+
+    [SerializeField]
+    private GameObject[] MedTogList;
+    
+
 
     [SerializeField]
     private TMP_Text dayDisplay;
@@ -41,6 +51,13 @@ public class FamilyMenuScript : MonoBehaviour
         foreach (Text member in familyList)
         {
             member.text = familyScript.Instance.FamilyNames[i] + " - " + familyScript.Instance.HungerValues[familyScript.Instance.FamilyFoodState[i]] + " - " + familyScript.Instance.HealthValues[familyScript.Instance.FamilyHealthState[i]];
+            if(familyScript.Instance.FamilyHealthState[i] == 1 || familyScript.Instance.FamilyHealthState[i] == 2){
+                MedTogList[i].SetActive(true);
+            }
+            if(familyScript.Instance.FamilyHealthState[i] == 3 || familyScript.Instance.FamilyFoodState[i] == 3){
+                FoodTogList[i].SetActive(false);
+                MedTogList[i].SetActive(false);
+            }
             i++;
         }
     }
@@ -49,7 +66,7 @@ public class FamilyMenuScript : MonoBehaviour
     {
         totalCost.text = CalcTotal().ToString();
 
-        if (CurrencySystem.Instance.GetCurrency() < CalcTotal())
+        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
         {
             totalCost.text = "TOO MUCH!";
             nextDayBtn.transform.localScale = Vector3.zero;
@@ -62,9 +79,14 @@ public class FamilyMenuScript : MonoBehaviour
 
     public void UpdateButton()
     {
-        familyScript.Instance.DayUpdate(foodList, medList);
+        bool dead = familyScript.Instance.DayUpdate(foodList, medList);
         CurrencySystem.Instance.AddCurrency(-CalcTotal());
-        SceneManager.LoadScene("Factory");
+        if(dead){
+            SceneManager.LoadScene("GameOver");
+        }
+        else{
+            SceneManager.LoadScene("Factory");
+        }
     }
     public void FoodButtons(int index)
     {
@@ -88,10 +110,6 @@ public class FamilyMenuScript : MonoBehaviour
     private int CalcTotal()
     {
         totalCostVal = 0;
-        if (CurrencySystem.Instance.GetCurrency() < 0)
-        {
-            totalCostVal -= CurrencySystem.Instance.GetCurrency();
-        }
         foreach (var item in foodList)
         {
             if (item)
@@ -106,6 +124,12 @@ public class FamilyMenuScript : MonoBehaviour
                 totalCostVal += 200;
             }
         }
+
+        if (CurrencySystem.Instance.GetCurrency() < 0 && totalCostVal <= 0)
+        {
+            return 0;
+        }
+
         return totalCostVal;
     }
 }
