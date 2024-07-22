@@ -66,7 +66,7 @@ public class FamilyMenuScript : MonoBehaviour
     {
         totalCost.text = CalcTotal().ToString();
 
-        if (CurrencySystem.Instance.GetCurrency() < CalcTotal())
+        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
         {
             totalCost.text = "TOO MUCH!";
             nextDayBtn.transform.localScale = Vector3.zero;
