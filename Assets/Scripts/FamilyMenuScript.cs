@@ -66,7 +66,7 @@ public class FamilyMenuScript : MonoBehaviour
     {
         totalCost.text = CalcTotal().ToString();
 
-        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() == 0)
+        if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
         {
             totalCost.text = "TOO MUCH!";
             nextDayBtn.transform.localScale = Vector3.zero;
@@ -110,10 +110,6 @@ public class FamilyMenuScript : MonoBehaviour
     private int CalcTotal()
     {
         totalCostVal = 0;
-        if (CurrencySystem.Instance.GetCurrency() < 0)
-        {
-            totalCostVal -= CurrencySystem.Instance.GetCurrency();
-        }
         foreach (var item in foodList)
         {
             if (item)
@@ -128,6 +124,12 @@ public class FamilyMenuScript : MonoBehaviour
                 totalCostVal += 200;
             }
         }
+
+        if (CurrencySystem.Instance.GetCurrency() < 0 && totalCostVal <= 0)
+        {
+            return 0;
+        }
+
         return totalCostVal;
     }
 }
