@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class ButtonSequencer : MonoBehaviour
 {
+    public ItemReader itemReader;
     public List<ButtonScript> sequenceButtons;
     private List<int> numSequence = new List<int>();
 
@@ -29,7 +30,10 @@ public class ButtonSequencer : MonoBehaviour
     }
     void OnButtonClicked(ButtonScript clickedButton)
     {
-        numSequence.Add(clickedButton.GetNumber());
+        if (!itemReader.seeSequence)
+        {
+            numSequence.Add(clickedButton.GetNumber());
+        }
         Debug.Log("Number Sequence: " + GetNumberSequence());
         displayString.text = "Number Sequence: " + GetNumberSequence();
     }
