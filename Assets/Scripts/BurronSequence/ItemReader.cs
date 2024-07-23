@@ -15,17 +15,21 @@ public class ItemReader : MonoBehaviour
     public int itemLength;
     public bool seeSequence = false;
 
+
     [SerializeField]
     private float waitDuration;
-
+    private bool listenerAdded = false;
     // Start is called before the first frame update
     void Update()
     {
         itemName.text = item.itemName;
-        itemSequence.text = item.itemSequence;
         itemLength = item.itemSequence.Length;
         itemImage.sprite = item.itemSprite;
-        seeSeqeunceButton.onClick.AddListener(SeeSequenceSwitch);
+        if (!listenerAdded)
+        {
+            seeSeqeunceButton.onClick.AddListener(SeeSequenceSwitch);
+            listenerAdded = true;
+        }
 
         if (seeSequence)
         {

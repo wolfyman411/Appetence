@@ -20,6 +20,12 @@ public class ItemRotator : MonoBehaviour
     void Start()
     {
         item = itemReader.item = objects[Random.Range(0, objects.Count)];
+        var allSequence = "";
+        for (int i = 0; i < objects.Count; i++)
+        {
+            allSequence += objects[i].itemName + ": " + objects[i].itemSequence + "\n";
+        }
+        itemReader.itemSequence.text = allSequence;
     }
 
     // Update is called once per frame
