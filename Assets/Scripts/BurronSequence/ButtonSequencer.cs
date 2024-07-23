@@ -14,6 +14,12 @@ public class ButtonSequencer : MonoBehaviour
     [SerializeField]
     private TMP_Text displayString;
 
+    [SerializeField]
+    private AudioSource audioPlayer;
+
+    [SerializeField]
+    private AudioClip[] audioClips;
+
     void Start()
     {
         for (int i = 0; i < sequenceButtons.Count; i++)
@@ -33,8 +39,11 @@ public class ButtonSequencer : MonoBehaviour
         if (!itemReader.seeSequence)
         {
             numSequence.Add(clickedButton.GetNumber());
+            audioPlayer.clip = audioClips[clickedButton.GetNumber()];
+            audioPlayer.pitch = (numSequence.Count / 100.0f) + 0.8f;
+            Debug.Log((numSequence.Count / 100.0f)+0.8f);
+            audioPlayer.Play();
         }
-        Debug.Log("Number Sequence: " + GetNumberSequence());
         displayString.text = "Number Sequence: " + GetNumberSequence();
     }
 
