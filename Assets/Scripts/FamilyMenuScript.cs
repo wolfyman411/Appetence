@@ -8,6 +8,13 @@ using UnityEngine.UI;
 public class FamilyMenuScript : MonoBehaviour
 {
     [SerializeField]
+    private GameObject playUI;
+    [SerializeField]
+    private GameObject settingsUI;
+    private bool SettingsMenu = false;
+
+
+    [SerializeField]
     bool[] foodList;
     [SerializeField]
     bool[] medList;
@@ -75,8 +82,28 @@ public class FamilyMenuScript : MonoBehaviour
         {
             nextDayBtn.transform.localScale = Vector3.one;
         }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            MenuChange();
+        }
     }
-
+    public void MenuChange()
+    {
+        if(SettingsMenu){
+            playUI.SetActive(true);
+            settingsUI.SetActive(false);
+            SettingsMenu = false;
+        }
+        else{
+            playUI.SetActive(false);
+            settingsUI.SetActive(true);
+            SettingsMenu = true;
+        }
+        
+    }
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
     public void UpdateButton()
     {
         bool dead = familyScript.Instance.DayUpdate(foodList, medList);

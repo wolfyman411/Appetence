@@ -6,11 +6,16 @@ using UnityEngine.UIElements;
 
 public class ItemRotator : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject playUI;
+    [SerializeField]
+    private GameObject settingsUI;
+    private bool SettingsMenu = false;
     public List<ItemObjects> objects;
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
 
-    private bool isworking = true;
+    //private bool isworking = true;
     private ItemObjects item;
 
     [SerializeField]
@@ -32,7 +37,9 @@ public class ItemRotator : MonoBehaviour
     void Update()
     {
         currencyDisplay.text = CurrencySystem.Instance.GetCurrency().ToString();
-
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            MenuChange();
+        }
         if (buttonSequencer.GetNumberSequence().Length <= 0)
         {
             return;
@@ -55,5 +62,24 @@ public class ItemRotator : MonoBehaviour
 
             CurrencySystem.Instance.AddCurrency(35);
         }
+        
+    }
+    public void MenuChange()
+    {
+        if(SettingsMenu){
+            playUI.SetActive(true);
+            settingsUI.SetActive(false);
+            SettingsMenu = false;
+        }
+        else{
+            playUI.SetActive(false);
+            settingsUI.SetActive(true);
+            SettingsMenu = true;
+        }
+        
+    }
+    public void ExitButton()
+    {
+        Application.Quit();
     }
 }
