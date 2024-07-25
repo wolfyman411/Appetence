@@ -13,6 +13,9 @@ public class FamilyMenuScript : MonoBehaviour
     private GameObject settingsUI;
     private bool SettingsMenu = false;
 
+    [SerializeField]
+    private TMP_Text tutorialText;
+
 
     [SerializeField]
     bool[] foodList;
@@ -52,7 +55,10 @@ public class FamilyMenuScript : MonoBehaviour
         currency.text = CurrencySystem.Instance.GetCurrency().ToString();
 
         dayDisplay.text = "Day " + familyScript.Instance.day.ToString();
-
+        if(familyScript.Instance.day > 0){
+            tutorialText.enabled = false;
+        }
+        
         //SetNames and States
         var i = 0;
         foreach (Text member in familyList)
@@ -85,6 +91,9 @@ public class FamilyMenuScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             MenuChange();
         }
+        if (Input.GetMouseButtonDown(0)){
+            tutorialText.enabled = false;
+        }
     }
     public void MenuChange()
     {
@@ -104,6 +113,7 @@ public class FamilyMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+    
     public void UpdateButton()
     {
         bool dead = familyScript.Instance.DayUpdate(foodList, medList);

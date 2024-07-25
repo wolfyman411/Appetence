@@ -15,6 +15,9 @@ public class ItemRotator : MonoBehaviour
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
 
+    [SerializeField]
+    private TMP_Text tutorialText;
+
     //private bool isworking = true;
     private ItemObjects item;
 
@@ -33,6 +36,9 @@ public class ItemRotator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(familyScript.Instance.day > 1){
+            tutorialText.enabled = false;
+        }
         item = itemReader.item = objects[Random.Range(0, objects.Count)];
         var allSequence = "";
         for (int i = 0; i < objects.Count; i++)
@@ -48,6 +54,9 @@ public class ItemRotator : MonoBehaviour
         currencyDisplay.text = CurrencySystem.Instance.GetCurrency().ToString();
         if(Input.GetKeyDown(KeyCode.Escape)){
             MenuChange();
+        }
+        if (Input.GetMouseButtonDown(0)){
+            tutorialText.enabled = false;
         }
         if (buttonSequencer.GetNumberSequence().Length <= 0)
         {
@@ -78,6 +87,7 @@ public class ItemRotator : MonoBehaviour
             audioBuzzer.Play();
         }
         
+        
     }
     public void MenuChange()
     {
@@ -93,6 +103,7 @@ public class ItemRotator : MonoBehaviour
         }
         
     }
+    
     public void ExitButton()
     {
         Application.Quit();
