@@ -12,6 +12,9 @@ public class FamilyMenuScript : MonoBehaviour
     [SerializeField]
     private GameObject settingsUI;
     private bool SettingsMenu = false;
+    private bool tutorial = false;
+    [SerializeField]
+    private TMP_Text tutorialText;
 
 
     [SerializeField]
@@ -103,6 +106,17 @@ public class FamilyMenuScript : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
+    }
+    public void TutorialButton()
+    {
+       if(tutorial){
+            tutorialText.enabled = false;
+            tutorial = false;
+        }
+        else{
+            tutorialText.enabled = true;
+            tutorial = true;
+        }
     }
     public void UpdateButton()
     {

@@ -14,6 +14,9 @@ public class ItemRotator : MonoBehaviour
     public List<ItemObjects> objects;
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
+    private bool tutorial = false;
+    [SerializeField]
+    private TMP_Text tutorialText;
 
     //private bool isworking = true;
     private ItemObjects item;
@@ -77,6 +80,17 @@ public class ItemRotator : MonoBehaviour
             SettingsMenu = true;
         }
         
+    }
+    public void TutorialButton()
+    {
+       if(tutorial){
+            tutorialText.enabled = false;
+            tutorial = false;
+        }
+        else{
+            tutorialText.enabled = true;
+            tutorial = true;
+        }
     }
     public void ExitButton()
     {
