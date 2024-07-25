@@ -72,4 +72,7 @@ public class familyScript : MonoBehaviour
     int getHealth(int i){
         return FamilyHealthState[i];
     }
+    int getDay(){
+        return day;
+    }
 }
