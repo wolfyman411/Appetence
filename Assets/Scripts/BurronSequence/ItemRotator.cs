@@ -24,6 +24,15 @@ public class ItemRotator : MonoBehaviour
     [SerializeField]
     private TMP_Text currencyDisplay;
 
+    [SerializeField]
+    private AudioSource audioBuzzer;
+
+    [SerializeField]
+    private AudioClip correctSound;
+
+    [SerializeField]
+    private AudioClip failSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +70,9 @@ public class ItemRotator : MonoBehaviour
             buttonSequencer.ClearNumberSequence();
 
             CurrencySystem.Instance.AddCurrency(-50);
+
+            audioBuzzer.clip = failSound;
+            audioBuzzer.Play();
         }
         else if (buttonSequencer.GetNumberSequence().Length == itemReader.item.itemSequence.Length)
         {
@@ -70,6 +82,9 @@ public class ItemRotator : MonoBehaviour
             buttonSequencer.ClearNumberSequence();
 
             CurrencySystem.Instance.AddCurrency(35);
+
+            audioBuzzer.clip = correctSound;
+            audioBuzzer.Play();
         }
         
         
