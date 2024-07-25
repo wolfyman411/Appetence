@@ -65,11 +65,38 @@ public class familyScript : MonoBehaviour
         if(FamilyDeathList[0]==1){
             dead = true;
         }
+        if (FamilyMemberCheck())
+        {
+            dead = true;
+        }
+
         day++;
         return (dead);
     }
 
     int getHealth(int i){
         return FamilyHealthState[i];
+    }
+
+    private bool FamilyMemberCheck()
+    {
+        var familyDead = false;
+        int deaths = 0;
+        for (int i = 1; i < FamilyDeathList.Length; i++)
+        {
+            if (FamilyDeathList[i] == 1)
+            {
+                deaths++;
+            }
+            if (deaths >= 3)
+            {
+                familyDead = true;
+            }
+            else
+            {
+                familyDead = false;
+            }
+        }
+        return (familyDead);
     }
 }
