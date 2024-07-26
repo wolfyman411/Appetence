@@ -69,7 +69,7 @@ public class familyScript : MonoBehaviour
         return (dead);
     }
     public void Reset(){
-        bool dead = false;
+
         for(int i = 0; i < FamilyFoodState.Length; i++){
             FamilyFoodState[i] = 0;
             FamilyHealthState[i] = 0;
