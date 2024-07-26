@@ -29,6 +29,7 @@ public class GameOverScript : MonoBehaviour
 
     public void RestartButton()
     {
+        familyScript.Instance.Reset();
         SceneManager.LoadScene("Family");
     }
     public void ExitButton()
