@@ -22,7 +22,6 @@ public class FamilyMenuScript : MonoBehaviour
     [SerializeField]
     bool[] medList;
 
-
     [SerializeField]
     Text[] familyList;
 
@@ -42,7 +41,12 @@ public class FamilyMenuScript : MonoBehaviour
 
     [SerializeField]
     private GameObject[] MedTogList;
-    
+
+    [SerializeField]
+    private int daysToWin = 10;
+
+    [SerializeField]
+    private string gameWonScene = "TODO";
 
 
     [SerializeField]
@@ -55,6 +59,12 @@ public class FamilyMenuScript : MonoBehaviour
         currency.text = CurrencySystem.Instance.GetCurrency().ToString();
 
         dayDisplay.text = "Day " + familyScript.Instance.day.ToString();
+        
+        if (familyScript.Instance.day >= daysToWin)
+        {
+            SceneManager.LoadScene(gameWonScene);
+        }
+
         if(familyScript.Instance.day > 0){
             tutorialText.enabled = false;
         }
