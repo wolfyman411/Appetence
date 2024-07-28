@@ -73,11 +73,18 @@ public class familyScript : MonoBehaviour
         day++;
         return (dead);
     }
-
+    public void Reset(){
+        for(int i = 0; i < FamilyFoodState.Length; i++){
+            FamilyFoodState[i] = 0;
+            FamilyHealthState[i] = 0;
+            FamilyDeathList[i] = 0;
+        }
+        day = 0;
+    }
     int getHealth(int i){
         return FamilyHealthState[i];
     }
-
+    
     private bool FamilyMemberCheck()
     {
         var familyDead = false;
@@ -98,5 +105,7 @@ public class familyScript : MonoBehaviour
             }
         }
         return (familyDead);
+    int getDay(){
+        return day;
     }
 }

@@ -7,11 +7,18 @@ using UnityEngine;
 
 public class ButtonSequencer : MonoBehaviour
 {
+    public ItemReader itemReader;
     public List<ButtonScript> sequenceButtons;
     private List<int> numSequence = new List<int>();
 
     [SerializeField]
     private TMP_Text displayString;
+
+    [SerializeField]
+    private AudioSource audioPlayer;
+
+    [SerializeField]
+    private AudioClip[] audioClips;
 
     void Start()
     {
@@ -29,8 +36,14 @@ public class ButtonSequencer : MonoBehaviour
     }
     void OnButtonClicked(ButtonScript clickedButton)
     {
-        numSequence.Add(clickedButton.GetNumber());
-        Debug.Log("Number Sequence: " + GetNumberSequence());
+        if (!itemReader.seeSequence)
+        {
+            numSequence.Add(clickedButton.GetNumber());
+            audioPlayer.clip = audioClips[clickedButton.GetNumber()];
+            audioPlayer.pitch = (numSequence.Count / 100.0f) + 0.8f;
+            Debug.Log((numSequence.Count / 100.0f)+0.8f);
+            audioPlayer.Play();
+        }
         displayString.text = "Number Sequence: " + GetNumberSequence();
     }
 

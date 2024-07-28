@@ -8,6 +8,16 @@ using UnityEngine.UI;
 public class FamilyMenuScript : MonoBehaviour
 {
     [SerializeField]
+    private GameObject playUI;
+    [SerializeField]
+    private GameObject settingsUI;
+    private bool SettingsMenu = false;
+
+    [SerializeField]
+    private TMP_Text tutorialText;
+
+
+    [SerializeField]
     bool[] foodList;
     [SerializeField]
     bool[] medList;
@@ -49,12 +59,16 @@ public class FamilyMenuScript : MonoBehaviour
         currency.text = CurrencySystem.Instance.GetCurrency().ToString();
 
         dayDisplay.text = "Day " + familyScript.Instance.day.ToString();
-
+        
         if (familyScript.Instance.day >= daysToWin)
         {
             SceneManager.LoadScene(gameWonScene);
         }
 
+        if(familyScript.Instance.day > 0){
+            tutorialText.enabled = false;
+        }
+        
         //SetNames and States
         var i = 0;
         foreach (Text member in familyList)
@@ -84,8 +98,32 @@ public class FamilyMenuScript : MonoBehaviour
         {
             nextDayBtn.transform.localScale = Vector3.one;
         }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            MenuChange();
+        }
+        if (Input.GetMouseButtonDown(0)){
+            tutorialText.enabled = false;
+        }
     }
-
+    public void MenuChange()
+    {
+        if(SettingsMenu){
+            playUI.SetActive(true);
+            settingsUI.SetActive(false);
+            SettingsMenu = false;
+        }
+        else{
+            playUI.SetActive(false);
+            settingsUI.SetActive(true);
+            SettingsMenu = true;
+        }
+        
+    }
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
+    
     public void UpdateButton()
     {
         bool dead = familyScript.Instance.DayUpdate(foodList, medList);
