@@ -34,35 +34,45 @@ public class familyScript : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    public bool DayUpdate(bool[] foodList, bool[] medList){
+    public bool DayUpdate(bool[] foodList, bool[] medList)
+    {
         bool dead = false;
-        for(int i = 0; i < foodList.Length; i++){
-            if(FamilyDeathList[i] != 1){
+        for (int i = 0; i < foodList.Length; i++)
+        {
+            if (FamilyDeathList[i] != 1)
+            {
                 //food logic
-                if(foodList[i] == true && FamilyFoodState[i] > 0){
+                if (foodList[i] == true && FamilyFoodState[i] > 0)
+                {
                     FamilyFoodState[i] = FamilyFoodState[i] - 1;
                 }
-                else if(foodList[i] == false){
+                else if (foodList[i] == false)
+                {
                     FamilyFoodState[i] = FamilyFoodState[i] + 1;
                 }
                 //health logic
-                
-                if(FamilyFoodState[i] > 0){
-                    if((Random.Range(0f, 10.0f)) > 8f && day > 1){
+
+                if (FamilyFoodState[i] > 0)
+                {
+                    if ((Random.Range(0f, 10.0f)) > 8f && day > 1)
+                    {
                         FamilyHealthState[i] = FamilyHealthState[i] + 1;
                     }
                 }
-                if(medList[i]== true && FamilyHealthState[i] > 0){
+                if (medList[i] == true && FamilyHealthState[i] > 0)
+                {
                     FamilyHealthState[i] = FamilyHealthState[i] - 1;
                 }
-                
-                if(FamilyFoodState[i] == 3 || FamilyHealthState[i] == 3){
+
+                if (FamilyFoodState[i] == 3 || FamilyHealthState[i] == 3)
+                {
                     FamilyDeathList[i] = 1;
                 }
             }
-            
+
         }
-        if(FamilyDeathList[0]==1){
+        if (FamilyDeathList[0] == 1)
+        {
             dead = true;
         }
         if (FamilyMemberCheck())
@@ -73,18 +83,21 @@ public class familyScript : MonoBehaviour
         day++;
         return (dead);
     }
-    public void Reset(){
-        for(int i = 0; i < FamilyFoodState.Length; i++){
+    public void Reset()
+    {
+        for (int i = 0; i < FamilyFoodState.Length; i++)
+        {
             FamilyFoodState[i] = 0;
             FamilyHealthState[i] = 0;
             FamilyDeathList[i] = 0;
         }
         day = 0;
     }
-    int getHealth(int i){
+    int getHealth(int i)
+    {
         return FamilyHealthState[i];
     }
-    
+
     private bool FamilyMemberCheck()
     {
         var familyDead = false;
@@ -105,7 +118,9 @@ public class familyScript : MonoBehaviour
             }
         }
         return (familyDead);
-    int getDay(){
-        return day;
+        int getDay()
+        {
+            return day;
+        }
     }
 }
