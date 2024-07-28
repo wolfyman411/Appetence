@@ -11,7 +11,10 @@ public class ItemRotator : MonoBehaviour
     [SerializeField]
     private GameObject settingsUI;
     private bool SettingsMenu = false;
+
     public List<ItemObjects> objects;
+    public List<ItemObjects> chosenObjects;
+
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
 
@@ -39,11 +42,19 @@ public class ItemRotator : MonoBehaviour
         if(familyScript.Instance.day > 1){
             tutorialText.enabled = false;
         }
-        item = itemReader.item = objects[Random.Range(0, objects.Count)];
-        var allSequence = "";
-        for (int i = 0; i < objects.Count; i++)
+
+        //Difficulty handler
+        int maxItem = Mathf.Clamp(familyScript.Instance.day + 3,0, objects.Count);
+        for (int i = 0; i < 4; i++)
         {
-            allSequence += objects[i].itemName + ": " + objects[i].itemSequence + "\n";
+            chosenObjects.Add(objects[Random.Range(0, maxItem)]);
+        }
+
+        item = itemReader.item = chosenObjects[Random.Range(0, chosenObjects.Count)];
+        var allSequence = "";
+        for (int i = 0; i < chosenObjects.Count; i++)
+        {
+            allSequence += chosenObjects[i].itemName + ": " + chosenObjects[i].itemSequence + "\n";
         }
         itemReader.itemSequence.text = allSequence;
     }
@@ -77,7 +88,7 @@ public class ItemRotator : MonoBehaviour
         else if (buttonSequencer.GetNumberSequence().Length == itemReader.item.itemSequence.Length)
         {
             Debug.Log("Correct");
-            item = itemReader.item = objects[Random.Range(0, objects.Count)];
+            item = itemReader.item = chosenObjects[Random.Range(0, chosenObjects.Count)];
             StartCoroutine(itemReader.CorrectnessDisplay("Correct"));
             buttonSequencer.ClearNumberSequence();
 
