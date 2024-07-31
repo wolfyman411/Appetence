@@ -13,6 +13,7 @@ public class CurrencySystem : MonoBehaviour
         if (Instance != null)
         {
             //Debug.LogError("There is more than one instance!");
+            Destroy(this);
             return;
         }
 

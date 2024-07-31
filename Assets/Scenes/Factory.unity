@@ -1492,6 +1492,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9575cd52fe1172d4ea1619094e6df277, type: 2}
   - {fileID: 11400000, guid: 8a9c5a99035b3ad4196a580a85be1946, type: 2}
   - {fileID: 11400000, guid: aabf2853691f68e48baf5ea7234fc90d, type: 2}
+  - {fileID: 11400000, guid: 570a1e33968f9e24895e2bf53afe235d, type: 2}
+  - {fileID: 11400000, guid: b3444e80cbdd8cc469b3825ca6801c8d, type: 2}
+  - {fileID: 11400000, guid: 8c5aeadffff53094b91b199571392fc4, type: 2}
+  - {fileID: 11400000, guid: a586e32dd313e194dab8613ea9994150, type: 2}
+  - {fileID: 11400000, guid: 955d7ddd0609c4c41b7f1872f984f2bc, type: 2}
+  - {fileID: 11400000, guid: d4ab26914d11fc74bbc2d06aba5d8157, type: 2}
   itemReader: {fileID: 139165623}
   buttonSequencer: {fileID: 461648558}
   tutorialText: {fileID: 394679638}
