@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     public TMP_Text countDownDisplay;
     [SerializeField]
     private string _loadSceneName = "Family";
+    [SerializeField]
+    private LevelLoader _levelLoader;
 
     private float _countDownTime
     {
@@ -38,7 +40,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time has run out!");
                 _countDownTime = 0;
                 CountStop();
-                SceneManager.LoadScene(_loadSceneName);
+                StartCoroutine(_levelLoader.LoadLevel(_loadSceneName));
             }
         }
     }

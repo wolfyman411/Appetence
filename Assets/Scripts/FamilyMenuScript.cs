@@ -37,6 +37,9 @@ public class FamilyMenuScript : MonoBehaviour
     private Button nextDayBtn;
 
     [SerializeField]
+    private LevelLoader levelLoader;
+
+    [SerializeField]
     private GameObject[] FoodTogList;
 
     [SerializeField]
@@ -132,7 +135,7 @@ public class FamilyMenuScript : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
         else{
-            SceneManager.LoadScene("Factory");
+            StartCoroutine(levelLoader.LoadLevel("Factory"));
         }
     }
     public void FoodButtons(int index)
