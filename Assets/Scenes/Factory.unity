@@ -982,8 +982,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FamilyMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 1233466933}
+        m_TargetAssemblyTypeName: ItemRotator, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1233466934}
         m_TargetAssemblyTypeName: VolumeControl, Assembly-CSharp
         m_MethodName: UpdateMusicVolume
         m_Mode: 1
@@ -2417,6 +2417,7 @@ GameObject:
   - component: {fileID: 1233466930}
   - component: {fileID: 1233466929}
   - component: {fileID: 1233466933}
+  - component: {fileID: 1233466934}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2541,6 +2542,22 @@ MonoBehaviour:
   audioBuzzer: {fileID: 2043980457}
   correctSound: {fileID: 8300000, guid: 8ac2869ef42e62f42a14bdd8f616adb3, type: 3}
   failSound: {fileID: 8300000, guid: f241955226847f142a1f5ff8e5862f54, type: 3}
+--- !u!114 &1233466934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233466928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e60dcaa0620b4b42af03daec93c3034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMixer: {fileID: 0}
+  sfxMixer: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
 --- !u!1 &1256830638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,8 +3760,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FamilyMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 1233466933}
+        m_TargetAssemblyTypeName: ItemRotator, Assembly-CSharp
         m_MethodName: MenuChange
         m_Mode: 1
         m_Arguments:
@@ -4422,7 +4439,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1233466934}
         m_TargetAssemblyTypeName: VolumeControl, Assembly-CSharp
         m_MethodName: UpdateSFXVolume
         m_Mode: 1
