@@ -51,8 +51,17 @@ public class FamilyMenuScript : MonoBehaviour
     [SerializeField]
     private string gameWonScene = "TODO";
 
+    [SerializeField]
+    private AudioSource purchaseSFX;
 
     [SerializeField]
+    private AudioClip foodPurchase;
+
+	[SerializeField]
+	private AudioClip medPurchase;
+
+
+	[SerializeField]
     private TMP_Text dayDisplay;
 
     private int totalCostVal;
@@ -144,7 +153,9 @@ public class FamilyMenuScript : MonoBehaviour
             foodList[index] = false;
         }
         else if(foodList[index] == false){
-            foodList[index] = true;
+			purchaseSFX.clip = foodPurchase;
+			purchaseSFX.Play();
+			foodList[index] = true;
         }
     }
     public void MedButtons(int index)
@@ -153,6 +164,8 @@ public class FamilyMenuScript : MonoBehaviour
             medList[index] = false;
         }
         else if(medList[index] == false){
+            purchaseSFX.clip = medPurchase;
+            purchaseSFX.Play();
             medList[index] = true;
         }
     }
