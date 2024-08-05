@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 public class ItemRotator : MonoBehaviour
 {
     [SerializeField]
+    private GameObject buttons;
+    private bool showButtons = true;
+    [SerializeField]
     private GameObject playUI;
     [SerializeField]
     private GameObject settingsUI;
@@ -114,7 +117,17 @@ public class ItemRotator : MonoBehaviour
         }
         
     }
-    
+    public void InstructionButton()
+    {
+        if(showButtons){
+            showButtons = false;
+            buttons.SetActive(false);
+        }
+        else{
+            showButtons = true;
+            buttons.SetActive(true);
+        }
+    }
     public void ExitButton()
     {
         Application.Quit();
