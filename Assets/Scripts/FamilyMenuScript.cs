@@ -14,7 +14,7 @@ public class FamilyMenuScript : MonoBehaviour
     private bool SettingsMenu = false;
 
     [SerializeField]
-    private TMP_Text tutorialText;
+    private GameObject tutorialText;
 
 
     [SerializeField]
@@ -49,7 +49,7 @@ public class FamilyMenuScript : MonoBehaviour
     private int daysToWin = 10;
 
     [SerializeField]
-    private string gameWonScene = "TODO";
+    private string gameWonScene = "GameSurvived";
 
     [SerializeField]
     private AudioSource purchaseSFX;
@@ -78,7 +78,7 @@ public class FamilyMenuScript : MonoBehaviour
         }
 
         if(familyScript.Instance.day > 0){
-            tutorialText.enabled = false;
+            Destroy(tutorialText);
         }
         
         //SetNames and States
@@ -114,7 +114,7 @@ public class FamilyMenuScript : MonoBehaviour
             MenuChange();
         }
         if (Input.GetMouseButtonDown(0)){
-            tutorialText.enabled = false;
+            Destroy(tutorialText);
         }
     }
     public void MenuChange()

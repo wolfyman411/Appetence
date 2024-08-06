@@ -60,6 +60,16 @@ public class Timer : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
+
+        if (minutes < 0)
+        {
+            minutes = 0;
+        }
+        if (seconds < 0)
+        {
+            seconds = 0;
+        }
+
         countDownDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

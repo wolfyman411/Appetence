@@ -19,7 +19,7 @@ public class ItemRotator : MonoBehaviour
     public ButtonSequencer buttonSequencer;
 
     [SerializeField]
-    private TMP_Text tutorialText;
+    private GameObject tutorialText;
 
     //private bool isworking = true;
     private ItemObjects item;
@@ -40,7 +40,7 @@ public class ItemRotator : MonoBehaviour
     void Start()
     {
         if(familyScript.Instance.day > 1){
-            tutorialText.enabled = false;
+            Destroy(tutorialText);
         }
 
         //Difficulty handler
@@ -67,7 +67,7 @@ public class ItemRotator : MonoBehaviour
             MenuChange();
         }
         if (Input.GetMouseButtonDown(0)){
-            tutorialText.enabled = false;
+            Destroy(tutorialText);
         }
         if (buttonSequencer.GetNumberSequence().Length <= 0)
         {
@@ -80,7 +80,7 @@ public class ItemRotator : MonoBehaviour
             StartCoroutine(itemReader.CorrectnessDisplay("Wrong"));
             buttonSequencer.ClearNumberSequence();
 
-            CurrencySystem.Instance.AddCurrency(-50);
+            CurrencySystem.Instance.AddCurrency(-5);
 
             audioBuzzer.clip = failSound;
             audioBuzzer.Play();
@@ -92,7 +92,7 @@ public class ItemRotator : MonoBehaviour
             StartCoroutine(itemReader.CorrectnessDisplay("Correct"));
             buttonSequencer.ClearNumberSequence();
 
-            CurrencySystem.Instance.AddCurrency(35);
+            CurrencySystem.Instance.AddCurrency(15);
 
             audioBuzzer.clip = correctSound;
             audioBuzzer.Play();

@@ -9,6 +9,7 @@ public class ItemReader : MonoBehaviour
     public ItemObjects item;
     public TMP_Text itemName;
     public TMP_Text itemSequence;
+    public GameObject instructionShower;
     public TMP_Text correctness;
     public Button seeSeqeunceButton;
     public Image itemImage;
@@ -33,11 +34,11 @@ public class ItemReader : MonoBehaviour
 
         if (seeSequence)
         {
-            itemSequence.gameObject.SetActive(true);
+            instructionShower.SetActive(true);
         }
         else
         {
-            itemSequence.gameObject.SetActive(false);
+            instructionShower.SetActive(false);
         }
     }
 
