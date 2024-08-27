@@ -93,6 +93,8 @@ public class familyScript : MonoBehaviour
             FamilyDeathList[i] = 0;
         }
         day = 0;
+
+        CurrencySystem.Instance.SetCurrency(350);
     }
     int getHealth(int i)
     {
