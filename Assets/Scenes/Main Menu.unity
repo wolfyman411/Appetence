@@ -148,7 +148,7 @@ AudioSource:
   m_GameObject: {fileID: 239025419}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 31f6a84159e796243b6fd3c56a82d745, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1a733fec1262a1f43af4a18823b74da7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 532436314}
   - component: {fileID: 532436313}
   - component: {fileID: 532436317}
+  - component: {fileID: 532436318}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -501,6 +502,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 834160639}
   settingsMenu: {fileID: 1296740907}
+--- !u!114 &532436318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532436312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e60dcaa0620b4b42af03daec93c3034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMixer: {fileID: 24100000, guid: 31f6a84159e796243b6fd3c56a82d745, type: 2}
+  sfxMixer: {fileID: 24100000, guid: bb386ce8f6dc8d7499fa03d740cd8e41, type: 2}
+  musicSlider: {fileID: 2003428784}
+  sfxSlider: {fileID: 0}
 --- !u!1 &610016140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2210,7 @@ GameObject:
   - component: {fileID: 2003428783}
   - component: {fileID: 2003428784}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: Music Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,13 +2282,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1297843326}
   m_HandleRect: {fileID: 1683965782}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.00000001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 532436318}
+        m_TargetAssemblyTypeName: VolumeControl, Assembly-CSharp
+        m_MethodName: UpdateMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2113413219
 GameObject:
   m_ObjectHideFlags: 0
