@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class ItemRotator : MonoBehaviour
@@ -20,11 +21,6 @@ public class ItemRotator : MonoBehaviour
 
     public ItemReader itemReader;
     public ButtonSequencer buttonSequencer;
-
-    [SerializeField]
-    private GameObject tutorialBackground;
-
-    public GameObject partsPanel;
 
     [SerializeField]
     private TMP_Text tutorialText;
@@ -49,7 +45,6 @@ public class ItemRotator : MonoBehaviour
     {
         if(familyScript.Instance.day > 1){
             tutorialText.enabled = false;
-            tutorialBackground.SetActive(false);
         }
 
         //Difficulty handler
@@ -66,8 +61,6 @@ public class ItemRotator : MonoBehaviour
             allSequence += chosenObjects[i].itemName + ": " + chosenObjects[i].itemSequence + "\n";
         }
         itemReader.itemSequence.text = allSequence;
-
-        partsPanel.GetComponent<Image>().tintColor = new Color(82.0f, 90.0f, 99.0f);
     }
 
     // Update is called once per frame
@@ -79,7 +72,6 @@ public class ItemRotator : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0)){
             tutorialText.enabled = false;
-            tutorialBackground.SetActive(false);
         }
         if (buttonSequencer.GetNumberSequence().Length <= 0)
         {
@@ -137,12 +129,15 @@ public class ItemRotator : MonoBehaviour
             buttons.SetActive(true);
         }
     }
-    public void RightOrWrongColorChange()
-    {
-
-    }
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void MainMenuButton()
+    {
+        familyScript.Instance.Reset();
+
+        SceneManager.LoadScene("Main Menu");
     }
 }
