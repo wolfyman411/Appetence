@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ShopItem", order = 1)]
 public class ShopItem : ScriptableObject
 {
     public string itemName;
     public int cost;
-    public bool availible;
+    public bool available;
     public Sprite itemIcon;
 }
 
