@@ -80,7 +80,6 @@ public class familyScript : MonoBehaviour
         {
             dead = true;
         }
-
         day++;
         return (dead);
     }
@@ -121,9 +120,9 @@ public class familyScript : MonoBehaviour
             }
         }
         return (familyDead);
-        int getDay()
-        {
-            return day;
-        }
+    }
+    public int getDay()
+    {
+        return day;
     }
 }

@@ -69,8 +69,6 @@ public class FamilyMenuScript : MonoBehaviour
     public void Start()
     {
 
-        currency.text = CurrencySystem.Instance.GetCurrency().ToString();
-
         dayDisplay.text = "Day " + familyScript.Instance.day.ToString();
         
         if (familyScript.Instance.day >= daysToWin)
@@ -100,6 +98,8 @@ public class FamilyMenuScript : MonoBehaviour
 
     public void Update()
     {
+        currency.text = CurrencySystem.Instance.GetCurrency().ToString();
+
         totalCost.text = CalcTotal().ToString();
 
         if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
