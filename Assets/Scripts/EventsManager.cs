@@ -18,11 +18,19 @@ public class EventsManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         
         // Add events
-        events.Add(new Events("Car Breakdown", "Your car broke down, and you had to pay 50 for repairs.", -50, 0));
-        events.Add(new Events("Lucky Find", "You found 40 on the floor!", 40, 0));
+        //negative
+        events.Add(new Events("Car Breakdown", "Your car broke down, and you had to pay 200 coins for repairs", -200, 0));
+        events.Add(new Events("Speeding Ticket", "You were pulled over for speeding and got a ticket for 100 coins", -100, 0));
+        events.Add(new Events("Injury", "Work injuries, pay 100 coins", -100, 0));
+
+        //positive
+        events.Add(new Events("Lucky Find", "You found 40 coins on the floor when coming out of work", 40, 0));
+        events.Add(new Events("Lottery", "You won a random lottery at work and were given 100 coins", 100, 0));
+        events.Add(new Events("Welfare", "Asked government for welfare and got 75 coins", 75, 0));
+        events.Add(new Events("Charity", "Charity help gave 25 coins", 25, 0));
+        events.Add(new Events("Promotion", "Your boss notices you, you got 30 extra coins", 30, 0));
 
         OnSceneLoaded();
-
     }
     public void TriggerRandomEvent()
     {
