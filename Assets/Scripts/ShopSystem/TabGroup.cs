@@ -11,8 +11,15 @@ public class TabGroup : MonoBehaviour
     public Sprite tabActive;
     public TabButton tabSelected;
     public List<GameObject> panels;
-    [SerializeField] TMP_Text welcomeText;
+    private GameObject welcomeText;
+    private GameObject label;
 
+    private void Start()
+    {
+        welcomeText = GameObject.Find("WelcomeText");
+        label = GameObject.Find("Labels");
+        label.SetActive(false);
+    }
     public void AddToList(TabButton button)
     {
         if (buttons == null)
@@ -29,13 +36,15 @@ public class TabGroup : MonoBehaviour
         ResetTabs();
         button.icon.sprite = tabActive;
 
-        welcomeText.enabled = false;
+        welcomeText.SetActive(false);
+        label.SetActive(true);
+
         int index = button.transform.GetSiblingIndex();
         for (int i = 0; i < panels.Count; i++)
         {
             if (i == index)
             {
-                panels[i].SetActive(true);
+                panels[i].SetActive(true);               
             }
             else
             {

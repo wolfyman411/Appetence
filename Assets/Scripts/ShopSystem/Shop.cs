@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Shop : MonoBehaviour
 {
     [SerializeField]
     private ShopItem[] shopItems;
@@ -14,11 +14,11 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private GameObject vertContainer;
 
+    private ShopUI shop;
 
     //TESTING VARS
     private int aliveFamily = 0;
     private int sickFamily = 0;
-
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,12 @@ public class NewBehaviourScript : MonoBehaviour
             ShopUI icon = newItem.GetComponent<ShopUI>();
 
             // Set the shop item data
-            icon.Setup(shop); 
+            icon.Setup(shop);
+
+            if (familyScript.Instance.getDay() == 0)
+            {
+                icon.SetAvailability(true);
+            }
         }
 
             /* var i = 0; //TEMP
