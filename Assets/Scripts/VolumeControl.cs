@@ -16,12 +16,32 @@ public class VolumeControl : MonoBehaviour
     [SerializeField]
     private Slider sfxSlider;
 
-    public void UpdateMusicVolume(){
-        musicMixer.SetFloat("musicVol", musicSlider.value);
+    private void Start()
+    {
+        float savedMusicVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        musicSlider.value = savedMusicVol;
+        musicMixer.SetFloat("musicVol", Mathf.Log10(savedMusicVol) * 20);
+
+        float savedSFXVol = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        sfxSlider.value = savedSFXVol;
+        sfxMixer.SetFloat("sfxVol", Mathf.Log10(savedSFXVol) * 20);
+    }
+    public void UpdateMusicVolume()
+    {
+        musicMixer.SetFloat("musicVol", Mathf.Log10(musicSlider.value) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
     }
 
-    public void UpdateSFXVolume(){
-        musicMixer.SetFloat("sfxVol", sfxSlider.value);
+    public void UpdateSFXVolume()
+    {
+        sfxMixer.SetFloat("sfxVol", Mathf.Log10(sfxSlider.value) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
-   
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+        PlayerPrefs.Save();
+    }
 }

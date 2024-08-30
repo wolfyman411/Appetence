@@ -72,7 +72,6 @@ public class FamilyMenuScript : MonoBehaviour
 
     public void Start()
     {
-        currency.text = CurrencySystem.Instance.GetCurrency().ToString();
 
         dayDisplay.text = "Day " + familyScript.Instance.day.ToString();
         
@@ -103,6 +102,8 @@ public class FamilyMenuScript : MonoBehaviour
 
     public void Update()
     {
+        currency.text = CurrencySystem.Instance.GetCurrency().ToString();
+
         totalCost.text = CalcTotal().ToString();
 
         if (CurrencySystem.Instance.GetCurrency() < CalcTotal() && CalcTotal() != 0)
@@ -139,7 +140,14 @@ public class FamilyMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
-    
+
+    public void MainMenuButton()
+    {
+        familyScript.Instance.Reset();
+
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void UpdateButton()
     {
         bool dead = familyScript.Instance.DayUpdate(foodList, medList);

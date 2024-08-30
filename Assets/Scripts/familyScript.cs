@@ -80,7 +80,6 @@ public class familyScript : MonoBehaviour
         {
             dead = true;
         }
-
         day++;
         return (dead);
     }
@@ -93,6 +92,8 @@ public class familyScript : MonoBehaviour
             FamilyDeathList[i] = 0;
         }
         day = 0;
+
+        CurrencySystem.Instance.SetCurrency(350);
     }
     int getHealth(int i)
     {
@@ -119,9 +120,9 @@ public class familyScript : MonoBehaviour
             }
         }
         return (familyDead);
-        int getDay()
-        {
-            return day;
-        }
+    }
+    public int getDay()
+    {
+        return day;
     }
 }
