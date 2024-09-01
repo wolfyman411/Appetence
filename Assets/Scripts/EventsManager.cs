@@ -9,12 +9,10 @@ public class EventsManager : MonoBehaviour
     public List<Events> events = new List<Events>();
     public GameObject panel;
     public TextMeshProUGUI descriptionText;
-    private CurrencySystem currencySystem;
     private Scene currentScene;
 
     private void Start()
     {
-        currencySystem = FindObjectOfType<CurrencySystem>();
         currentScene = SceneManager.GetActiveScene();
         
         // Add events
@@ -52,7 +50,7 @@ public class EventsManager : MonoBehaviour
 
     public void AffectPlayer(Events selectedEvent)
     {
-        currencySystem.AddCurrency(selectedEvent.moneyChange);
+        CurrencySystem.Instance.AddCurrency(selectedEvent.moneyChange);
        // Debug.Log("Affecting player");
     }
 

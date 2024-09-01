@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32aeeebc479d33749a6e0cceff575560, type: 3}
-  m_Name: Food
+  m_Name: GirlClothing
   m_EditorClassIdentifier: 
-  itemName: Food
-  itemDescription: 
-  cost: 60
-  available: 0
-  itemIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: Girl Clothing
+  itemDescription: des
+  cost: 20
+  available: 1
+  itemIcon: {fileID: 21300000, guid: fa6f4c1bf2984404496f4f3fc0d4022d, type: 3}

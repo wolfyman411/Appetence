@@ -13,6 +13,10 @@ public class FamilyMenuScript : MonoBehaviour
     private GameObject settingsUI;
     private bool SettingsMenu = false;
 
+    [SerializeField] 
+    private GameObject shopUI;
+    private bool shopMenu = false;
+
     [SerializeField]
     private TMP_Text tutorialText;
 
@@ -155,6 +159,20 @@ public class FamilyMenuScript : MonoBehaviour
             StartCoroutine(levelLoader.LoadLevel("Factory"));
         }
     }
+    public void ShopButton()
+    {
+        if (shopMenu)
+        {
+            shopUI.SetActive(false);
+            shopMenu = false;
+        }
+        else
+        {
+            shopUI.SetActive(true);
+            shopMenu = true;
+        }
+    }
+
     public void FoodButtons(int index)
     {
         if(foodList[index] == true){
